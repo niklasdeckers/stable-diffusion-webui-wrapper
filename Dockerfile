@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN python3.10 --version
 
 # set python3.10 as default
-RUN update-alternatives --install /usr/local/bin/python3 python3 /usr/local/bin/python3.10 1
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
 
 RUN python3 -m pip install --upgrade pip
 
