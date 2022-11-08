@@ -6,7 +6,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   git \
   python3.10
   
-RUN python --version
 RUN python3 --version
 
 # set python3.10 as default
