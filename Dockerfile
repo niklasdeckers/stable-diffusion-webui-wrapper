@@ -3,7 +3,8 @@ FROM python:3.10-slim
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
   wget \
-  git
+  git \
+  ffmpeg libsm6 libxext6
 
 ARG PIP_PREFER_BINARY=1 PIP_NO_CACHE_DIR=1
 RUN python3 -m pip install --upgrade pip
