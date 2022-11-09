@@ -4,11 +4,12 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
   wget \
   git \
-  ffmpeg libsm6 libxext6
+  ffmpeg libsm6 libxext6 \
+  software-properties-common
 
 RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-get update && apt-get install -y --no-install-recommends \
-	python3.10 \
+  python3.10 \
   python3.10-distutils
 
 ARG PIP_PREFER_BINARY=1 PIP_NO_CACHE_DIR=1
