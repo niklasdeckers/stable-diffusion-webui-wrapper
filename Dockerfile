@@ -1,21 +1,14 @@
-FROM nvidia/cuda:11.2.2-cudnn8-devel-ubuntu18.04
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-	software-properties-common
-RUN add-apt-repository ppa:deadsnakes/ppa
+FROM python:3.10-slim
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
   wget \
-  git \
-  python3.10
+  git
 
-RUN python3.10 --version
-
-# set python3.10 as default
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
-
+ARG PIP_PREFER_BINARY=1 PIP_NO_CACHE_DIR=1
 RUN python3 -m pip install --upgrade pip
+
+RUN pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 --extra-index-url https://download.pytorch.org/whl/cu113
 
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
 
