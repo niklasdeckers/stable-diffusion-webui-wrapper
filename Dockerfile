@@ -14,4 +14,5 @@ RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
 
 WORKDIR /stable-diffusion-webui
 
-RUN python3 -c "from launch import prepare_environment; prepare_environment()"
+# mind the spelling mistake, originally in https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/launch.py
+RUN python3 -c "from launch import prepare_enviroment; prepare_enviroment()"
