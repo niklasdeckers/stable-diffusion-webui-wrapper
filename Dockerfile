@@ -17,3 +17,5 @@ WORKDIR /stable-diffusion-webui
 
 # mind the spelling mistake, originally in https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/launch.py
 RUN python3 -c "from launch import prepare_enviroment; prepare_enviroment()" --skip-torch-cuda-test
+
+EXPOSE 7860
