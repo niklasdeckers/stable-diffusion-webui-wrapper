@@ -6,6 +6,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   git \
   ffmpeg libsm6 libxext6
 
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt-get update && apt-get install -y --no-install-recommends \
+	python3.10 \
+  python3.10-distutils
+
 ARG PIP_PREFER_BINARY=1 PIP_NO_CACHE_DIR=1
 RUN python3 -m pip install --upgrade pip
 
