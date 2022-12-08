@@ -10,13 +10,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-get update && apt-get install -y --no-install-recommends \
   python3.10 \
-  python3.10-distutils \
-  python3-pip
+  python3.10-distutils
 
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
 
 ARG PIP_PREFER_BINARY=1 PIP_NO_CACHE_DIR=1
-RUN pip install --upgrade pip
+RUN python3 -m ensurepip --upgrade
 RUN pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 --extra-index-url https://download.pytorch.org/whl/cu113
 
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
