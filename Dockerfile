@@ -4,6 +4,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
   wget \
   git \
+  curl \
   ffmpeg libsm6 libxext6 \
   software-properties-common
 
