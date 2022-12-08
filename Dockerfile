@@ -25,6 +25,7 @@ WORKDIR /stable-diffusion-webui
 RUN python3 -c "from launch import prepare_enviroment; prepare_enviroment()" --skip-torch-cuda-test
 
 RUN git clone https://github.com/d8ahazard/sd_dreambooth_extension.git ./extensions/sd_dreambooth_extension
+ARG PYTHONPATH=/stable-diffusion-webui
 RUN python3 ./extensions/sd_dreambooth_extension/install.py
 
 EXPOSE 7860
