@@ -4,16 +4,19 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
   wget \
   git \
+  curl \
   ffmpeg libsm6 libxext6 \
   software-properties-common
 
 RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-get update && apt-get install -y --no-install-recommends \
   python3.10 \
-  python3.10-distutils \
-  python3-pip
+  python3.10-distutils
+
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
 
 ARG PIP_PREFER_BINARY=1 PIP_NO_CACHE_DIR=1
+RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3
 RUN pip install --upgrade pip
 RUN pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 --extra-index-url https://download.pytorch.org/whl/cu113
 
