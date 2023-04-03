@@ -24,8 +24,7 @@ RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
 
 WORKDIR /stable-diffusion-webui
 
-# mind the spelling mistake, originally in https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/launch.py
-RUN python3 -c "from launch import prepare_enviroment; prepare_enviroment()" --skip-torch-cuda-test
+RUN python3 -c "from launch import prepare_environment; prepare_environment()" --skip-torch-cuda-test
 
 RUN git clone https://github.com/d8ahazard/sd_dreambooth_extension.git ./extensions/sd_dreambooth_extension
 ARG PYTHONPATH=/stable-diffusion-webui
